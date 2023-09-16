@@ -1,0 +1,58 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block title %}
+<title> Edit Profile</title>
+{% endblock %}
+{% block page %}
+Edit Profile
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid form-container">
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-7 form-part">
+              <div class="row">
+                <div class="col-lg-8 col-md-11  formcol mx-auto">
+                     <h3>Edit Profile</h3>
+                  <form role="form" action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data"> 
+                    <label for="" class="form-label">{{msg}}</label>
+                    {% csrf_token %}
+                     <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="floatingInput" placeholder="Enter Full Name" name="name" value="{{user.name}}">
+                      <label for="floatingInput">Full Name</label>
+                     </div>
+                    <div class="form-floating mb-3">
+                      <input type="tel" class="form-control" id="floatingInput" placeholder="Enter Mobile Number"name="Mobile" value="{{user.Mobile}}">
+                      <label for="floatingInput">Mobile Number</label>
+                    </div>
+                     <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="floatingInput"readonly placeholder="Enter Email Address" name="email" value="{{user.email}}">
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="floatingInput" placeholder="Enter Full Name" name="Address" value="{{user.Address}}">
+                      <label for="floatingInput">Address</label>
+                     </div>
+                    <div class="form-floating">
+                      
+                      <img scr="{{user.profile_pic.url}}"alt="">
+                      <input type="file" name="pic" class="'form-control">
+                    </div>
+                    <p> </p>
+                    <div class="form-floating">
+                     <button type="submit"class="btn btn-primary">Edit Profile</button>
+                    </div>
+                    <p> </p>
+                  </form>
+
+                </div>
+               
+              </div>
+               
+            </div>
+        </div>
+    </div>
+  </div> 
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block title %}
+<title>Complains</title>
+{% endblock %}
+{% block page %}
+Manage complains
+{% endblock %}
+
+{% block content %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Manage complains</h2>
+          <ol>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li>Manage complains</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+
+        <div class="row">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Manage complains</h5>
+                  
+    
+                  <!-- Table with stripped rows -->
+                  <table class="table datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Complain BY</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">complain status</th>
+                        <th scope="col">complain created on</th>
+                        <th scope=" "> </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for complain in complains %}
+                    {% if complain.solve == False %}
+                      <tr>
+                        <td>
+                          <div class="d-flex px-2 py-1">
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">{{complain.complain_by.fname}} {{complain.complain_by.lname}}</h6>
+                              <p class="text-xs text-secondary mb-0">{{complain.complain_by.email}}</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0">{{complain.subject}}</p>
+                          
+                        </td>
+                        <td>
+                          <span class="text-secondary text-xs font-weight-bold">{{complain.solve}}</span>
+                        </td>
+                        <td>
+                          <span class="text-secondary text-xs font-weight-bold">{{complain.complain_on}}</span>
+                        </td>
+                        <td class="align-middle">
+                            <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                <a href="{% url 'view-complain' complain.id %}"><button class="btn btn-dark"><i class="fa fa-eye"></i></button></a>
+                                <a href="{% url 'solve-complain' complain.id %}"><button class="btn btn-dark"><i class="fa fa-check"></i></button></a>
+                            </a>  
+                        </td>
+                      </tr>
+                      {% endif %}
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
+    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Manage Event</h5>
+                  
+    
+                  <!-- Table with stripped rows -->
+                  <table class="table datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Complain BY</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">complain status</th>
+                        <th scope="col">complain created on</th>
+                        <th scope=" "> </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for complain in complains %}
+                    {% if complain.solve == True %}
+                      <tr>
+                        <td>
+                          <div class="d-flex px-2 py-1">
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">{{complain.complain_by.fname}} {{complain.complain_by.lname}}</h6>
+                              <p class="text-xs text-secondary mb-0">{{complain.complain_by.email}}</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0">{{complain.subject}}</p>
+                          
+                        </td>
+                        <td>
+                          <span class="text-secondary text-xs font-weight-bold">{{complain.solve}}</span>
+                        </td>
+                        <td>
+                          <span class="text-secondary text-xs font-weight-bold">{{complain.complain_on}}</span>
+                        </td>
+                        <td class="align-middle">
+                            <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                <a href="{% url 'view-complain' complain.id %}"><button class="btn btn-dark"><i class="fa fa-eye"></i></button></a>
+                                
+                            </a>  
+                        </td>
+                      </tr>
+                      {% endif %}
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                  <!-- End Table with stripped rows -->
+    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+{% endblock %}

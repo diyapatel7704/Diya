@@ -1,0 +1,52 @@
+{% extends 'member-header.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container-fluid form-container">
+      <div class="container login-container">
+          <div class="row">
+              
+              <div class="col-md-7 form-part">
+                <div class="row">
+                  <p>  </p>
+                   <p>  </p>
+                   <p> </p>
+                   <p class="signinlink">Dont have an account <a href="">Sign Up</a></p>
+                   
+                   <p> </p>
+                  <div class="col-lg-8 col-md-11 login formcol mx-auto">
+                       <h3></h3>
+                    <form action="{% url 'create-complain' %}" method="POST" >
+                      {% if msg %} 
+                      <p style="color: red; text-align: center;"><b>*{{msg}}</b> </p>
+                      {% endif %}
+                      {% csrf_token %}
+                       <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="" placeholder="Enter Email Address" name="subject">
+                        <label for="subject">Subject</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <label for="des">Description</label>
+                        <textarea name="des" class="form-control" id="" col="30" rows="10"></textarea>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <label for="des"></label>
+                        <input type="file" class="form-control" name="pic" id="" >
+                      </div>
+                      <div class="form-floating">
+                       <button type="submit" class="btn btn-primary">Registor Complain</button>
+                      </div>
+                    </form>
+
+                  </div>
+                 
+                </div>
+                 
+              </div>
+          </div>
+      </div>
+    </div> 
+
+{% endblock %}
+ 

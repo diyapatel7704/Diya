@@ -1,0 +1,54 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block title %}<title>view Notice</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid form-container">
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-7 form-part">
+              <div class="row">
+                <div class="col-lg-8 col-md-11  formcol mx-auto">
+                     <h3>View Notice</h3>
+                    {% csrf_token %}
+                    <div class="d-flex flex-row">
+                        <div class="p-2">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Created By" name="created_by" value="{{notices.send_to.fname}} {{notices.send_to.lname}}">
+                                <label for="floatingInput">Created BY</label>
+                               </div>
+                        </div>
+                        <div class="p-2">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="subject" name="subject" value="{{notices.subject}}">
+                                <label for="floatingInput">Subject</label>
+                               </div>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row">
+                        <div class="p-2">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Mobile Number"name="mobile" value="{{notices.notice_on}}">
+                                <label for="floatingInput">Notice On</label>
+                              </div>
+                            </div>
+                        </div>
+                        <div >
+                            <textarea name="" class="'form-control" style="border:black 5px bold;border-radius: 5px bold; border-color: black;" id="" cols="30" rows="10">{{notices.des}}</textarea>
+                        </div>
+                    
+                  </form>
+
+                </div>
+               
+              </div>
+               
+            </div>
+        </div>
+    </div>
+  </div> 
+
+{% endblock %}

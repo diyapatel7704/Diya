@@ -1,0 +1,57 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block title %}
+<title>Add Events</title>
+{% endblock %}
+{% block page %}
+Add Events
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid form-container">
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-7 form-part">
+              <div class="row">
+                <div class="col-lg-8 col-md-11  formcol mx-auto">
+                     <h3>Add Event</h3>
+                  <form role="form" action="{% url 'add-event' %}" method="POST" enctype="multipart/form-data"> 
+                    {% csrf_token %}
+                        <div class="p-2">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="subject" name="subject" value="{{event.subject}}">
+                                <label for="floatingInput">Subject</label>
+                               </div>
+                        </div>
+                      </div>
+                      
+                        <div class="p-2">
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="floatingInput" placeholder="Date" name="date">
+                                <label for="floatingInput">Date</label>
+                               </div>
+                        </div>
+                        </div>
+                        <div >
+                            <textarea name="des" class="'form-control" style="border:black 5px bold;border-radius: 5px bold; border-color: black;" id="" cols="30" rows="10">{{event.des}}</textarea>
+                        </div>
+                        <div class="text-center">
+                            {% if event.pic %}
+                            <img src="{{event.pic.url}}" alt="" height="100px" width="100px">
+                            {% endif %}
+                        </div> 
+                    <div class="form-floating">
+                     <button type="submit"class="btn btn-primary">Add Event</button>
+                    </div>
+                    <p> </p>
+                  </form>
+
+                </div>
+               
+              </div>
+               
+            </div>
+        </div>
+    </div>
+  </div> 
+{% endblock %}

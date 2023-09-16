@@ -1,0 +1,53 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block title %}
+<title>New Notice</title>
+{% endblock %}
+{% block page %}
+New Notice
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid form-container">
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-7 form-part">
+              <div class="row">
+                <div class="col-lg-8 col-md-11  formcol mx-auto">
+                     <h3>New Notice</h3>
+                  <form role="form" action="{% url 'new-notice' %}" method="POST" enctype="multipart/form-data"> 
+                    {% csrf_token %}
+                        <div class="p-2">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="subject" name="subject" value="{{notice.subject}}">
+                                <label for="floatingInput">Subject</label>
+                               </div>
+                        </div>
+                      </div>
+                      
+                        <div class="p-2">
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="floatingInput" placeholder="Date" name="date">
+                                <label for="floatingInput">Date</label>
+                               </div>
+                        </div>
+                        </div>
+                        <div >
+                            <textarea name="des" class="'form-control" style="border:black 5px bold;border-radius: 5px bold; border-color: black;" id="" cols="30" rows="10">{{notice.des}}</textarea>
+                        </div>
+                        
+                    <div class="form-floating">
+                     <button type="submit"class="btn btn-primary">Add Notice</button>
+                    </div>
+                    <p> </p>
+                  </form>
+
+                </div>
+               
+              </div>
+               
+            </div>
+        </div>
+    </div>
+  </div> 
+{% endblock %}

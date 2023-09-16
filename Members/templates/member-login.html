@@ -1,0 +1,51 @@
+{% extends 'member-header.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container-fluid form-container">
+      <div class="container login-container">
+          <div class="row">
+              
+              <div class="col-md-7 form-part">
+                <div class="row">
+                   <p class="signinlink">Dont have an account <a href="">Sign Up</a></p>
+
+                  <div class="col-lg-8 col-md-11 login formcol mx-auto">
+                       <h3>Sign In</h3>
+                    <form action="" method="POST">
+                      {% if msg %} 
+                      <p style="color: red; text-align: center;"><b>*{{msg}}</b> </p>
+                      {% endif %}
+                      {% csrf_token %}
+                       <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email Address" name="email">
+                        <label for="email">Email address</label>
+                      </div>
+                      <div class="form-floating">
+                        <input type="password" class="form-control" id="Password" placeholder="Password" name="Password">
+                        <label for="Password">Password</label>
+                      </div>
+                      <p> </p>
+                      <div class="form-floating">
+                       <button type="submit" class="btn btn-primary">Login</button>
+                      </div>
+                      <p> </p>
+                      <p>
+                        Forget Password?
+                        <a href="" class="text-primary text-qradient fort-weight-bold">forget Password</a>
+                      </p>
+                    </form>
+
+                  </div>
+                 
+                </div>
+                 
+              </div>
+          </div>
+      </div>
+    </div> 
+
+{% endblock %}
+ 
+  
