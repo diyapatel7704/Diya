@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import *
 from housing_socity import models
-from datetime import date
+from datetime import date,datetime
 
 # Create your views here.
 def member_index(request):
@@ -47,6 +47,17 @@ def my_complains(request):
     return render(request,'my-complains.html',{'complains':complains})
 
 def my_notice(request):
-    user=Member.objects.get(email=request.session['memail'])
-    notices=models.Notice.objects.filter(send_to=user)
-    return render(request,'my-notice.html',{'notice':notices})    
+    # user = Member.objects.get(email=request.session['memail'])
+    notices = models.Notice.objects.filter(send_to__email=request.session['memail'])
+    return render(request,'my-notice.html',{'notices':notices})
+  
+def view_my_notice(request,pk):
+    notice = models.Notice.objects.get(id=pk)
+    notice.read = True
+    notice.read_time = datetime.now()
+    notice.save()
+    return redirect('my-notice')
+
+def solve_notice(request,pk):
+    notice= notice.objects.get(id=pk)
+    return redirect('my-notice')
