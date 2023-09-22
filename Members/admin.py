@@ -8,3 +8,5 @@ from .models import *
 @admin.register(Member)
 class MemberAdmin(admin.ModelAdmin):
     list_display = ['fname','lname','email','verify']
+
+

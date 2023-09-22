@@ -52,12 +52,27 @@ def my_notice(request):
     return render(request,'my-notice.html',{'notices':notices})
   
 def view_my_notice(request,pk):
-    notice = models.Notice.objects.get(id=pk)
-    notice.read = True
-    notice.read_time = datetime.now()
-    notice.save()
-    return redirect('my-notice')
+    notices = models.Notice.objects.get(id=pk)
+    return render(request,'view-my-notice.html',{'notices':notices})
 
-def solve_notice(request,pk):
-    notice= notice.objects.get(id=pk)
-    return redirect('my-notice')
+def pay_main(request):
+    return render(request,'pay-main.html')
+
+def change_member_detail(request):
+    try:
+        user=Member.objects.get(email=request.session['email'])
+        if request.POST:
+            user.fname = request.POST['fname']
+            user.lname = request.POST['lname']
+            user.mobile = request.POST['mobile']
+            user.flat_no = request.POST['flat_no']
+            user.wing = request.POST['wing']
+            user.save()
+        return render(request,'change-member-detail.html',{'user':user})
+    except:
+        return render(request,'member-login.html')
+    
+    
+   
+   
+

@@ -24,3 +24,4 @@ class Member(models.Model):
 
     def __str__(self) -> str:
         return self.fname + '  ' + self.lname +' >>'+ str(self.flat_no)
+    
